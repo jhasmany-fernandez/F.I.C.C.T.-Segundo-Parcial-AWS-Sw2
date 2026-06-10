@@ -6,4 +6,5 @@ services:
       - "8010:8010"
     volumes:
       - ./evidencias:/app/evidencias
+      - ./storage:/app/storage
     restart: unless-stopped

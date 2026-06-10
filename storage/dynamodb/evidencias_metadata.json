@@ -1,0 +1,32 @@
+[
+  {
+    "emergencia_id": "EMG-100",
+    "bucket": "sw2-ai-aws-simulado",
+    "key": "evidencias/imagenes/EMG-100_demo.jpg",
+    "tipo": "imagen",
+    "url_simulada": "s3://sw2-ai-aws-simulado/evidencias/imagenes/EMG-100_demo.jpg",
+    "size_bytes": 26,
+    "content_type": "image/jpeg",
+    "registrado_en": "2026-06-10T18:41:26.719581+00:00"
+  },
+  {
+    "emergencia_id": "vm2-vm3-1781117325",
+    "bucket": "sw2-ai-aws-simulado",
+    "key": "evidencias/imagenes/vm2-vm3-1781117325_20260610184845_20417651.txt",
+    "tipo": "texto",
+    "url_simulada": "s3://sw2-ai-aws-simulado/evidencias/imagenes/vm2-vm3-1781117325_20260610184845_20417651.txt",
+    "size_bytes": 90,
+    "content_type": "text/plain",
+    "registrado_en": "2026-06-10T18:48:45.618346+00:00"
+  },
+  {
+    "emergencia_id": "vm2-vm3-1781117803",
+    "bucket": "sw2-ai-aws-simulado",
+    "key": "evidencias/imagenes/vm2-vm3-1781117803_20260610185643_e0a303b1.txt",
+    "tipo": "texto",
+    "url_simulada": "s3://sw2-ai-aws-simulado/evidencias/imagenes/vm2-vm3-1781117803_20260610185643_e0a303b1.txt",
+    "size_bytes": 90,
+    "content_type": "text/plain",
+    "registrado_en": "2026-06-10T18:56:43.468581+00:00"
+  }
+]

@@ -216,3 +216,25 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local Codex workspace metadata
+.agents/
+.codex/
+.git.zip
+
+# Runtime artifacts
+*.sqlite3
+*.db
+
+# AI service evidence outputs
+evidencias/imagenes/
+evidencias/audios/
+evidencias/**/*.jpg
+evidencias/**/*.jpeg
+evidencias/**/*.png
+evidencias/**/*.webp
+evidencias/**/*.wav
+evidencias/**/*.mp3
+evidencias/**/*.m4a
+evidencias/**/*.ogg
+evidencias/**/*.webm

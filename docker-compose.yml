@@ -1,0 +1,9 @@
+services:
+  ai-service:
+    build: .
+    container_name: sw2-ai-aws-ai-service
+    ports:
+      - "8010:8010"
+    volumes:
+      - ./evidencias:/app/evidencias
+    restart: unless-stopped

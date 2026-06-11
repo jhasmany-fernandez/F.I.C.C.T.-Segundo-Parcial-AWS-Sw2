@@ -28,5 +28,25 @@
     "size_bytes": 90,
     "content_type": "text/plain",
     "registrado_en": "2026-06-10T18:56:43.468581+00:00"
+  },
+  {
+    "emergencia_id": "AUDIT-AWS-20260611",
+    "bucket": "sw2-ai-aws-simulado",
+    "key": "evidencias/imagenes/AUDIT-AWS-20260611_20260611054705_d2ca9c62.txt",
+    "tipo": "imagen",
+    "url_simulada": "s3://sw2-ai-aws-simulado/evidencias/imagenes/AUDIT-AWS-20260611_20260611054705_d2ca9c62.txt",
+    "size_bytes": 40,
+    "content_type": "text/plain",
+    "registrado_en": "2026-06-11T05:47:25.472091+00:00"
+  },
+  {
+    "emergencia_id": "GW-AWS-20260611",
+    "bucket": "sw2-ai-aws-simulado",
+    "key": "evidencias/imagenes/GW-AWS-20260611_20260611060439_dc68ac40.txt",
+    "tipo": "imagen",
+    "url_simulada": "s3://sw2-ai-aws-simulado/evidencias/imagenes/GW-AWS-20260611_20260611060439_dc68ac40.txt",
+    "size_bytes": 40,
+    "content_type": "text/plain",
+    "registrado_en": "2026-06-11T06:04:57.880676+00:00"
   }
 ]

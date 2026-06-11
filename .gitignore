@@ -229,6 +229,7 @@ __marimo__/
 # AI service evidence outputs
 evidencias/imagenes/
 evidencias/audios/
+evidencias/**/*.txt
 evidencias/**/*.jpg
 evidencias/**/*.jpeg
 evidencias/**/*.png
@@ -238,3 +239,12 @@ evidencias/**/*.mp3
 evidencias/**/*.m4a
 evidencias/**/*.ogg
 evidencias/**/*.webm
+
+# Spring Boot / Maven build outputs
+spring-gateway/target/
+
+# Simulated storage artifacts generated at runtime
+storage/s3/evidencias/audios/*
+storage/s3/evidencias/imagenes/*
+!storage/s3/evidencias/audios/.gitkeep
+!storage/s3/evidencias/imagenes/.gitkeep

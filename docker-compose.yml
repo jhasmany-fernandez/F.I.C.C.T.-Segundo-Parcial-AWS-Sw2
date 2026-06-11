@@ -8,3 +8,17 @@ services:
       - ./evidencias:/app/evidencias
       - ./storage:/app/storage
     restart: unless-stopped
+
+  spring-gateway:
+    build: ./spring-gateway
+    container_name: sw2-ai-aws-spring-gateway
+    depends_on:
+      - ai-service
+    environment:
+      AI_SERVICE_URL: http://ai-service:8010
+      VM1_BASE_URL: http://65.52.207.139
+      VM2_BASE_URL: http://34.122.37.25
+      VM2_JWT_TOKEN: ${VM2_JWT_TOKEN:-}
+    ports:
+      - "8020:8020"
+    restart: unless-stopped

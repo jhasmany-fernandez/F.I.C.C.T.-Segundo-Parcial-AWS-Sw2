@@ -30,5 +30,21 @@
     "timestamp": "2026-06-10T18:56:43Z",
     "previous_hash": "d8a0c6fa8c10d1fa8d700a35ba2ebf21a75f7f74d99af0cbbb016ee2ff75d1d8",
     "hash": "15b178b2e9fa6cb4ce87b1c0fd162eef7047c5260d62eb4a03a919a56aa30d92"
+  },
+  {
+    "index": 5,
+    "emergencia_id": "AUDIT-AWS-20260611",
+    "evento": "Auditoria despliegue real AWS VM3",
+    "timestamp": "2026-06-11T05:47:25.010108+00:00",
+    "previous_hash": "15b178b2e9fa6cb4ce87b1c0fd162eef7047c5260d62eb4a03a919a56aa30d92",
+    "hash": "16317dd700f9ba097abe1e6e36b0e7e16f4e09bc30659311ea55847fc18b6ff4"
+  },
+  {
+    "index": 6,
+    "emergencia_id": "GW-AWS-20260611",
+    "evento": "Validacion gateway Spring Boot VM3",
+    "timestamp": "2026-06-11T06:04:58.353559+00:00",
+    "previous_hash": "16317dd700f9ba097abe1e6e36b0e7e16f4e09bc30659311ea55847fc18b6ff4",
+    "hash": "c5381002823ed63161964540160f7465987c3a0d83d4b26b3c2aefa7be0e68cd"
   }
 ]

@@ -1,5 +1,8 @@
 package bo.edu.ficct.sw2.vm3gateway.web;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
@@ -23,6 +26,7 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
+@Tag(name = "Gateway Core", description = "Public Spring Boot gateway endpoints that proxy the internal FastAPI service")
 public class FastApiGatewayController {
 
     private final RestTemplate restTemplate;
@@ -37,6 +41,7 @@ public class FastApiGatewayController {
     }
 
     @GetMapping("/health")
+    @Operation(summary = "Gateway health", description = "Returns the public health status of the Spring Boot gateway on VM3")
     public Map<String, String> health() {
         return Map.of(
                 "service", "vm3-spring-gateway",
@@ -45,49 +50,63 @@ public class FastApiGatewayController {
     }
 
     @GetMapping("/gateway/status")
+    @Operation(summary = "FastAPI upstream status", description = "Checks the internal FastAPI core service running behind the Spring gateway")
     public ResponseEntity<String> gatewayStatus() {
         return forwardJsonGet("/health");
     }
 
     @PostMapping("/gateway/ai/clasificar")
+    @Operation(summary = "Classify incident", description = "Proxies incident classification requests to the internal FastAPI AI service")
     public ResponseEntity<String> classifyIncident(@RequestBody Map<String, Object> payload) {
         return forwardJsonPost("/ai/clasificar-incidente", payload);
     }
 
     @PostMapping("/gateway/dynamodb/evidencia")
+    @Operation(summary = "Register evidence metadata", description = "Proxies evidence metadata persistence to the internal DynamoDB-simulated endpoint")
     public ResponseEntity<String> dynamodbEvidence(@RequestBody Map<String, Object> payload) {
         return forwardJsonPost("/dynamodb/evidencia", payload);
     }
 
     @PostMapping("/gateway/blockchain/registrar")
+    @Operation(summary = "Register blockchain event", description = "Proxies blockchain audit registration to the internal FastAPI core")
     public ResponseEntity<String> blockchainRegister(@RequestBody Map<String, Object> payload) {
         return forwardJsonPost("/blockchain/registrar", payload);
     }
 
     @PostMapping("/gateway/n8n/webhook")
+    @Operation(summary = "Trigger n8n automation", description = "Proxies automation webhook requests to the internal FastAPI service")
     public ResponseEntity<String> n8nWebhook(@RequestBody Map<String, Object> payload) {
         return forwardJsonPost("/automation/n8n/webhook", payload);
     }
 
     @PostMapping(path = "/gateway/speech-to-text", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Speech to text", description = "Uploads an audio file through the gateway and proxies it to the internal speech-to-text service")
     public ResponseEntity<String> speechToText(
+            @Parameter(description = "Emergency identifier associated with the uploaded audio")
             @RequestParam @NotBlank String emergencia_id,
+            @Parameter(description = "Audio file to transcribe")
             @RequestParam MultipartFile audio
     ) throws IOException {
         return forwardMultipart("/ai/speech-to-text", emergencia_id, "audio", audio);
     }
 
     @PostMapping(path = "/gateway/deep-learning/vision", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Vision analysis", description = "Uploads an image through the gateway and proxies it to the internal deep learning vision service")
     public ResponseEntity<String> deepLearningVision(
+            @Parameter(description = "Emergency identifier associated with the uploaded image")
             @RequestParam @NotBlank String emergencia_id,
+            @Parameter(description = "Image file to analyze")
             @RequestParam MultipartFile imagen
     ) throws IOException {
         return forwardMultipart("/ai/deep-learning/vision", emergencia_id, "imagen", imagen);
     }
 
     @PostMapping(path = "/gateway/s3/upload-evidencia", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Operation(summary = "Upload evidence", description = "Uploads an evidence file through the gateway and proxies it to the internal S3-simulated endpoint")
     public ResponseEntity<String> s3UploadEvidence(
+            @Parameter(description = "Emergency identifier associated with the uploaded evidence")
             @RequestParam @NotBlank String emergencia_id,
+            @Parameter(description = "Evidence file to upload")
             @RequestParam MultipartFile archivo
     ) throws IOException {
         return forwardMultipart("/aws-s3/upload-evidencia", emergencia_id, "archivo", archivo);

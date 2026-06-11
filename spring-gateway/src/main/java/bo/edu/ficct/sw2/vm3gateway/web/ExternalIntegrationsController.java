@@ -3,6 +3,8 @@ package bo.edu.ficct.sw2.vm3gateway.web;
 import bo.edu.ficct.sw2.vm3gateway.config.IntegrationProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -18,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 @RestController
+@Tag(name = "Gateway Integrations", description = "Public Spring Boot gateway endpoints that aggregate VM1 Azure and VM2 GCP services")
 public class ExternalIntegrationsController {
 
     private final WebClient webClient;
@@ -35,16 +38,19 @@ public class ExternalIntegrationsController {
     }
 
     @GetMapping("/integrations/vm1/health")
+    @Operation(summary = "VM1 health", description = "Calls the public NestJS health endpoint exposed by VM1 Azure")
     public ResponseEntity<Map<String, Object>> vm1Health() {
         return forwardGet("VM1-AZURE", properties.getVm1BaseUrl() + "/nest/health", false);
     }
 
     @GetMapping("/integrations/vm2/health")
+    @Operation(summary = "VM2 health", description = "Calls the public FastAPI health endpoint exposed by VM2 Google Cloud")
     public ResponseEntity<Map<String, Object>> vm2Health() {
         return forwardGet("VM2-GCP", properties.getVm2BaseUrl() + "/api/health", false);
     }
 
     @GetMapping("/integrations/vm2/emergencias")
+    @Operation(summary = "VM2 emergencies", description = "Calls the public emergencies endpoint exposed by VM2 Google Cloud, using a JWT if VM2_JWT_TOKEN is configured")
     public ResponseEntity<Map<String, Object>> vm2Emergencias() {
         return forwardGet("VM2-GCP", properties.getVm2BaseUrl() + "/api/emergencias", true);
     }
